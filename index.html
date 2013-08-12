@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>My first Three.js app</title>
+    <style>canvas { width: 100%; height: 100% }
+
+    html {
+        background: #7ffff0; /* Old browsers */
+        background: -moz-linear-gradient(top,  #7ffff0 0%, #39dbc8 42%, #0f5c63 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7ffff0), color-stop(42%,#39dbc8), color-stop(100%,#0f5c63)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #7ffff0 0%,#39dbc8 42%,#0f5c63 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #7ffff0 0%,#39dbc8 42%,#0f5c63 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #7ffff0 0%,#39dbc8 42%,#0f5c63 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #7ffff0 0%,#39dbc8 42%,#0f5c63 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7ffff0', endColorstr='#0f5c63',GradientType=0 ); /* IE6-9 */
+    }
+    </style>
+</head>
+<body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r53/three.min.js"></script>
+<script>
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    var geometry = new THREE.CubeGeometry(1,1,1);
+    var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+    var cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    camera.position.z = 5;
+
+    var render = function () {
+        requestAnimationFrame(render);
+
+        cube.rotation.x += 0.1;
+        cube.rotation.y += 0.1;
+
+        renderer.render(scene, camera);
+    };
+
+    render();
+</script>
+</body>
+</html>

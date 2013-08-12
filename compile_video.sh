@@ -1,0 +1,1 @@
+ffmpeg -r 12 -i "video/save/save.%02d.png" -c:v libx264 -crf 23 -pix_fmt yuv420p video.mp4
